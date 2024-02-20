@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmers Registration</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Farmers Registration</h2>
+    <form id="registrationForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required>
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="tel" id="phoneNumber" required>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let fullName = document.getElementById("fullName").value;
+      let phoneNumber = document.getElementById("phoneNumber").value;
+      let uniqueCode = generateUniqueCode();
+      sendUniqueCodeToPhoneNumber(phoneNumber, uniqueCode);
+      alert("Registration successful! Your unique USSD code is: " + uniqueCode);
+    });
+
+    function generateUniqueCode() {
+      // Generate a random 6-digit number as a unique code
+      return Math.floor(100000 + Math.random() * 900000);
+    }
+
+    function sendUniqueCodeToPhoneNumber(phoneNumber, uniqueCode) {
+      // You would typically send the unique code to the farmer's phone number via SMS or USSD service
+      // For this example, let's just log it to the console
+      console.log("Sending unique code " + uniqueCode + " to phone number " + phoneNumber);
+    }
+  </script>
+</body>
+</html>
